@@ -29,5 +29,5 @@ else
 fi
 
 service apache2 start
-service freeradius start
-#/usr/sbin/freeradius -X
+#service freeradius start
+/usr/sbin/freeradius -X
