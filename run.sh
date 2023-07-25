@@ -18,4 +18,4 @@ fi
 mysqld_safe >/dev/null &
 sleep 2
 /usr/sbin/freeradius -X
-/usr/sbin/apachectl -DFOREGROUND -k start
+service apache2 start
