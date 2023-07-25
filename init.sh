@@ -1,7 +1,7 @@
 #!/bin/bash
 # Executable process script for Freeradius + DaloRadius + MySQL image:
 # GitHub: git@github.com:nullsoft8411/freeradius.git
-echo "Start init"
+
 echo "Starting initialization"
 function init_daloradius {
     echo "Starting daloRADIUS initialization"
