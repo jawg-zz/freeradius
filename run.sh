@@ -15,7 +15,12 @@ else
     date >$INIT_LOCK
 fi
 
-mysqld_safe >/dev/null &
-sleep 2
-/usr/sbin/freeradius -X
+service mysql start
+# wait for MySQL-Server to be ready
+echo -n "Waiting for mysql ($MYSQL_HOST)..."
+while ! mysqladmin ping -h"$MYSQL_HOST" -p"$MYSQL_PASSWORD" --silent; do
+    sleep 20
+done
+echo "MySQL - Done"
 service apache2 start
+/usr/sbin/freeradius -X
