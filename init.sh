@@ -49,7 +49,7 @@ function init_freeradius {
     ln -s $RADIUS_PATH/mods-available/sqlcounter $RADIUS_PATH/mods-enabled/sqlcounter
     ln -s $RADIUS_PATH/mods-available/sqlippool $RADIUS_PATH/mods-enabled/sqlippool
     sed -i 's|instantiate {|instantiate {\nsql|' $RADIUS_PATH/radiusd.conf # mods-enabled does not ensure the right order
-    sed -i 's|ipaddr = 127.0.0.1|ipaddr = \*|' $RADIUS_PATH/clients.conf
+    sed -i 's|ipaddr = 127.0.0.1|ipaddr = 0.0.0.0\/0|' $RADIUS_PATH/clients.conf
 
     # Enable used tunnel for unifi
     sed -i 's|use_tunneled_reply = no|use_tunneled_reply = yes|' $RADIUS_PATH/mods-available/eap
