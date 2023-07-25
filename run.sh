@@ -7,11 +7,11 @@ INIT_LOCK=/data/.init_done
 if test -f "$INIT_LOCK"; then
     if ! test -f "$DALORADIUS_CONF_PATH" || ! test -s "$DALORADIUS_CONF_PATH"; then
         echo "Init lock file exists but config file does not exist or is 0 bytes, performing initial setup of daloRADIUS."
-        /app/init.sh
+        /var/www/daloradius/init.sh
     fi
     echo "Init lock file exists and config file exists, skipping initial setup of daloRADIUS."
 else
-    /app/init.sh
+    /var/www/daloradius/init.sh
     date >$INIT_LOCK
 fi
 
