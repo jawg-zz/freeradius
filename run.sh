@@ -23,4 +23,5 @@ while ! mysqladmin ping -h"$MYSQL_HOST" -p"$MYSQL_PASSWORD" --silent; do
 done
 echo "MySQL - Done"
 service apache2 start
-/usr/sbin/freeradius -X
+service freeradius start
+#/usr/sbin/freeradius -X
