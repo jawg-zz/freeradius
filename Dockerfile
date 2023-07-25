@@ -10,7 +10,6 @@
 # 2. docker run --name freeradius  -p 8888:80 -p 8000:8000 -p 3307:3306 -p 1812:1812/udp -p 1813:1813/udp -p 1812:1812/tcp -p 1813:1813/tcp -v data:/data -v mysql:/var/lib/mysql -d myfreeradius
 FROM ubuntu:22.04
 MAINTAINER Mustafa Sahin <admin@bglaf.org>
-
 LABEL Description="Freeradius + daloRADIUS + MySQL on ubuntu 22.04 and PHP8.1." \
 	License="GPLv2" \
 	Usage="docker build . -t myfreeradius && docker run -d -p 80:80 -p 8000:8000 -p 1812:1812/udp -p 1813:1813/udp myfreeradius" \
@@ -34,7 +33,7 @@ ENV TZ Europe/Berlin
 RUN echo mysql-server mysql-server/root_password password $MYSQL_ROOT_PASSWORD | debconf-set-selections;\
   echo mysql-server mysql-server/root_password_again password $MYSQL_ROOT_PASSWORD | debconf-set-selections;
 
-# PHP install
+#install
 RUN apt-get update \
   && apt-get install --yes --no-install-recommends ca-certificates apt-utils  \
   tzdata apache2 libapache2-mod-php net-tools php php-common php-gd php-cli php-curl php-mail \
