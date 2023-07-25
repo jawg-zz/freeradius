@@ -2,6 +2,8 @@
 # Executable process script for Freeradius + DaloRadius + MySQL image:
 # GitHub: git@github.com:nullsoft8411/freeradius.git
 
+date +"%d-%m-%y - %H:%M"
+
 service mysql start
 
 # wait for MySQL-Server to be ready
