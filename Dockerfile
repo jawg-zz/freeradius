@@ -49,7 +49,7 @@ RUN a2dissite 000-default.conf && \
 
 # Create directories
 # /data should be mounted as volume to avoid recreation of database entries
-RUN mkdir /app /data
+RUN mkdir /data
 
 # Copy Daloradius to image
 ADD .  /var/www/daloradius
