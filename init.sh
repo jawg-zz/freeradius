@@ -2,12 +2,6 @@
 # Executable process script for Freeradius + DaloRadius + MySQL image:
 # GitHub: git@github.com:nullsoft8411/freeradius.git
 echo "Start init"
-# wait for MySQL-Server to be ready
-echo -n "Waiting for mysql ($MYSQL_HOST)..."
-while ! mysqladmin ping -h"$MYSQL_HOST" -p"$MYSQL_PASSWORD" --silent; do
-    sleep 20
-done
-echo "ok"
 echo "Starting initialization"
 function init_daloradius {
     echo "Starting daloRADIUS initialization"
