@@ -112,4 +112,5 @@ init_daloradius
 
 # Start Apache2 in the foreground
 service apache2 start
-/usr/sbin/freeradius -X
+service freeradius start
+#/usr/sbin/freeradius -X
