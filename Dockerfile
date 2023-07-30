@@ -38,7 +38,7 @@ RUN apt-get update \
   && apt-get install --yes --no-install-recommends ca-certificates apt-utils  \
   tzdata apache2 libapache2-mod-php net-tools php php-common php-gd php-cli php-curl php-mail \
   php-dev php-mail-mime php-mbstring php-db php-mysql php-zip mysql-client default-libmysqlclient-dev \
-  unzip wget nano curl freeradius-utils freeradius freeradius-mysql mysql-server\
+  unzip wget nano curl freeradius-utils freeradius freeradius-mysql mysql-server cron\
   && rm -rf /var/lib/apt/lists/*
 
 ADD contrib/docker/operators.conf /etc/apache2/sites-available/operators.conf
