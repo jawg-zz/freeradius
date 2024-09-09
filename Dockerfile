@@ -44,7 +44,10 @@ RUN apt-get update && apt-get install --yes --no-install-recommends \
 RUN mkdir -p /data /tmp/daloradius.log /var/log/apache2/daloradius
 
 # Clone daloRADIUS from GitHub
-RUN git clone https://github.com/lirantal/daloradius.git /var/www/daloradius
+#RUN git clone https://github.com/lirantal/daloradius.git /var/www/daloradius
+
+# Copy daloRADIUS
+ADD .  /var/www/daloradius
 
 # Set file permissions
 RUN chown -R www-data:www-data /var/www/daloradius /tmp/daloradius.log /var/log/apache2/daloradius
