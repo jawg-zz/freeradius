@@ -1,11 +1,12 @@
 # Base image for freeradius
-FROM freeradius/freeradius-server:latest AS freeradius_base
+FROM freeradius/freeradius-server:3.0.25 AS freeradius_base
 
 # Set environment variables for non-interactive installations
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Install required packages for freeradius, apache, php, and dependencies
-RUN apt-get update && apt-get install -y --no-install-recommends \
+# Run the update and install essential packages, and debug step
+RUN apt-get update -y \
+    && apt-get install -y --no-install-recommends \
     apache2 \
     php \
     php-mysql \
@@ -16,7 +17,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     unzip \
     mysql-client \
     && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/* \
+    && echo "Packages installed successfully!"
+
+# Debug step: check if Apache was installed correctly
+RUN apache2 -v || echo "Apache2 failed to install!"
+RUN php -v || echo "PHP failed to install!"
 
 # Install daloRADIUS from GitHub
 RUN git clone https://github.com/lirantal/daloradius.git /var/www/daloradius
