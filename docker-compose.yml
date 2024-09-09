@@ -18,13 +18,6 @@ services:
       RADIUS_ACCT_PORT_UDP: ${RADIUS_ACCT_PORT_UDP:-1813}
       RADIUS_AUTH_PORT_TCP: ${RADIUS_AUTH_PORT_TCP:-1812}
       RADIUS_ACCT_PORT_TCP: ${RADIUS_ACCT_PORT_TCP:-1813}
-    ports:
-      - "${WEB_PORT:-8888}:80"  # daloRADIUS web interface
-      - "${DA_API_PORT:-8000}:8000"  # daloRADIUS API
-      - "${RADIUS_AUTH_PORT_UDP:-1812}:1812/udp"  # RADIUS authentication
-      - "${RADIUS_ACCT_PORT_UDP:-1813}:1813/udp"  # RADIUS accounting
-      - "${RADIUS_AUTH_PORT_TCP:-1812}:1812/tcp"  # RADIUS authentication (TCP)
-      - "${RADIUS_ACCT_PORT_TCP:-1813}:1813/tcp"  # RADIUS accounting (TCP)
     volumes:
       - data:/data
 
