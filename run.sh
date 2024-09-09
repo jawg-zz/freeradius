@@ -24,14 +24,14 @@ echo "MariaDB is ready."
 # Initialize if required
 INIT_LOCK=/data/.init_done
 
-if [ -e "$INIT_LOCK" ]; then
-    echo "Initialization already done, skipping..."
-else
+# if [ -e "$INIT_LOCK" ]; then
+#   echo "Initialization already done, skipping..."
+# else
     echo "First-time setup: Running init script..."
     /var/www/daloradius/init.sh
     date > "$INIT_LOCK"
     echo "Initialization completed."
-fi
+#fi
 
 # Keep FreeRADIUS and Apache running in the foreground
 echo "Services started. Keeping container running."
