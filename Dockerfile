@@ -37,26 +37,33 @@ RUN apt-get update && apt-get install --yes --no-install-recommends \
     unzip \
     nano \
     cron \
+    git \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Create necessary directories
 RUN mkdir -p /data /tmp/daloradius.log /var/log/apache2/daloradius
 
-# Clone daloRADIUS from GitHub (or copy your custom daloRADIUS)
+# Clone daloRADIUS from GitHub
 RUN git clone https://github.com/lirantal/daloradius.git /var/www/daloradius
 
 # Set file permissions
 RUN chown -R www-data:www-data /var/www/daloradius /tmp/daloradius.log /var/log/apache2/daloradius
 
-# Enable Apache mods and adjust config
-RUN a2enmod rewrite \
-    && sed -i 's/Listen 80/Listen 80\nListen 8000/' /etc/apache2/ports.conf
+# Copy Apache and daloRADIUS configurations
+COPY contrib/docker/operators.conf /etc/apache2/sites-available/operators.conf
+COPY contrib/docker/users.conf /etc/apache2/sites-available/users.conf
+RUN a2dissite 000-default.conf && \
+    a2ensite users.conf operators.conf && \
+    sed -i 's/Listen 80/Listen 80\nListen 8000/' /etc/apache2/ports.conf
 
-# Copy run.sh to handle entry point processes
+# Copy entry point script
 COPY run.sh /run.sh
 RUN chmod +x /run.sh
 
-# Set the entrypoint
+# Expose Ports
+EXPOSE 80 8000 1812/udp 1813/udp
+
+# Set the entry point
 ENTRYPOINT ["/run.sh"]
 
 # Set the working directory
