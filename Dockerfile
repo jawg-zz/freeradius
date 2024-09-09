@@ -1,8 +1,11 @@
 # Base image for freeradius
 FROM freeradius/freeradius-server:3.0.25 AS freeradius_base
 
+# Set environment variables for non-interactive installations
+ENV DEBIAN_FRONTEND=noninteractive
+
 # Install required packages for freeradius, apache, php, and dependencies
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y --no-install-recommends \
     apache2 \
     php \
     php-mysql \
