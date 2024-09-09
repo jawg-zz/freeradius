@@ -62,10 +62,6 @@ RUN a2dissite 000-default.conf && \
 # Copy entry point script
 COPY run.sh /run.sh
 RUN chmod +x /run.sh
-
-# Expose Ports
-EXPOSE 80 8000 1812/udp 1813/udp
-
 # Set the entry point
 ENTRYPOINT ["/run.sh"]
 
