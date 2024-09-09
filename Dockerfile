@@ -1,5 +1,5 @@
 # Base image for freeradius
-FROM freeradius/freeradius-server:3.0.25 AS freeradius_base
+FROM freeradius/freeradius-server:latest AS freeradius_base
 
 # Set environment variables for non-interactive installations
 ENV DEBIAN_FRONTEND=noninteractive
