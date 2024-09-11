@@ -61,10 +61,10 @@ if (array_key_exists('csrf_token', $_POST) && isset($_POST['csrf_token']) &&
     $operator_user = $dbSocket->escapeSimple($_POST['operator_user']);
     $operator_pass = $dbSocket->escapeSimple($_POST['operator_pass']);
     
-    $sqlFormat = "select * from %s where username='%s' and password='%s'";
-    $sql = sprintf($sqlFormat, $configValues['CONFIG_DB_TBL_DALOOPERATORS'], $operator_user, $operator_pass);
-    $res = $dbSocket->query($sql);
-    $numRows = $res->numRows();
+   // $sqlFormat = "select * from %s where username='%s' and password='%s'";
+   // $sql = sprintf($sqlFormat, $configValues['CONFIG_DB_TBL_DALOOPERATORS'], $operator_user, $operator_pass);
+    //$res = $dbSocket->query($sql);
+    //$numRows = $res->numRows();
     
     // we only accept ONE AND ONLY ONE RECORD as result
     //if ($numRows === 1) {
