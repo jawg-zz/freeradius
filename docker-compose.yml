@@ -6,11 +6,11 @@ services:
       context: .
       dockerfile: Dockerfile
     environment:
-      MYSQL_HOST: ${MYSQL_HOST:-zos4g084s0g4gkg0css8g0sc}
-      MYSQL_PORT: ${MYSQL_PORT:-3306}
-      MYSQL_DATABASE: ${MYSQL_DATABASE:-radiusdb}
-      MYSQL_USER: ${MYSQL_USER:-root}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-q2m9u8zyOuAZknq4NfgfikGVrtSUUd70O8s7XGnYrMuYl9MjoeTrz7uGVfgNTTpJ}
+      MYSQL_HOST: ${MYSQL_HOST}
+      MYSQL_PORT: ${MYSQL_PORT}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       DEFAULT_CLIENT_SECRET: ${DEFAULT_CLIENT_SECRET:-testing123}
       WEB_PORT: ${WEB_PORT:-8888}
       DA_API_PORT: ${DA_API_PORT:-8001}
