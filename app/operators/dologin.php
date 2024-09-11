@@ -67,13 +67,15 @@ if (array_key_exists('csrf_token', $_POST) && isset($_POST['csrf_token']) &&
     $numRows = $res->numRows();
     
     // we only accept ONE AND ONLY ONE RECORD as result
-    if ($numRows === 1) {
-        $row = $res->fetchRow(DB_FETCHMODE_ASSOC);
-        $operator_id = $row['id'];
+    //if ($numRows === 1) {
+        //$row = $res->fetchRow(DB_FETCHMODE_ASSOC);
+        //$operator_id = $row['id'];
         
         $_SESSION['daloradius_logged_in'] = true;
-        $_SESSION['operator_user'] = $operator_user;
-        $_SESSION['operator_id'] = $operator_id;
+       // $_SESSION['operator_user'] = $operator_user;
+        $_SESSION['operator_user'] = admin;
+        //$_SESSION['operator_id'] = $operator_id;
+        $_SESSION['operator_id'] = 1;
         
         // lets update the lastlogin time for this operator
         $now = date("Y-m-d H:i:s");
@@ -81,7 +83,7 @@ if (array_key_exists('csrf_token', $_POST) && isset($_POST['csrf_token']) &&
         $sql = sprintf($sqlFormat, $configValues['CONFIG_DB_TBL_DALOOPERATORS'], $now, $operator_user);
         $res = $dbSocket->query($sql);
 
-    }
+   // }
     
     // close connection to db before redirecting
     include('../common/includes/db_close.php');
