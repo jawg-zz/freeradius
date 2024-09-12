@@ -29,8 +29,6 @@ include_once('../common/includes/config_read.php');
 
 dalo_session_start();
 
-/*
-
 $errorMessage = '';
 
 // we need to set location name session variable before opening the database
@@ -100,11 +98,5 @@ if ($_SESSION['daloradius_logged_in'] !== true) {
 }
 
 header("Location: $header_location");
-
-*/
-//nologin
-$_SESSION['daloradius_logged_in'] = true;
-$_SESSION['operator_user'] = 'admin';
-$_SESSION['operator_id'] = '1';
 
 ?>
