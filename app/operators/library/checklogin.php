@@ -33,7 +33,7 @@ if (strpos($_SERVER['PHP_SELF'], $this_filename) !== false) {
 
 include('sessions.php');
 dalo_session_start();
-/*
+
 if (!array_key_exists('daloradius_logged_in', $_SESSION) || $_SESSION['daloradius_logged_in'] !== true) {
     $_SESSION['daloradius_logged_in'] = false;
 
@@ -56,4 +56,3 @@ if (!array_key_exists('daloradius_logged_in', $_SESSION) || $_SESSION['daloradiu
     header($header);
     exit;
 }
-*/
