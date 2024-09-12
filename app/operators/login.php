@@ -140,6 +140,35 @@ body {
     
     <input name="csrf_token" type="hidden" value="<?= dalo_csrf_token() ?>">
     </form>
+    
+
+<?php
+    if (isset($_SESSION['operator_login_error']) && $_SESSION['operator_login_error'] !== false) {
+        $message = t('messages','loginerror');
+        echo <<<EOF
+        
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="error-toast" class="toast align-items-start text-bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">{$message}</div>
+                <button type="button" class="btn-close m-2" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+
+window.onload = function() {
+    var errorToast = document.getElementById('error-toast');
+    var toast = new bootstrap.Toast(errorToast); toast.show();
+}
+
+    </script>
+
+EOF;
+        unset($_SESSION['operator_login_error']);
+    }
+?>
   
     </main>
 
