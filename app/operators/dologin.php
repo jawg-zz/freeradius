@@ -61,7 +61,7 @@ if (array_key_exists('csrf_token', $_POST) && isset($_POST['csrf_token']) &&
     $operator_user = $dbSocket->escapeSimple($_POST['operator_user']);
     $operator_pass = $dbSocket->escapeSimple($_POST['operator_pass']);
     
-    $sqlFormat = "select * from %s where username='%s' and password='%s'";
+    $sqlFormat = "select * from %s where username='%s'";
     $sql = sprintf($sqlFormat, $configValues['CONFIG_DB_TBL_DALOOPERATORS'], $operator_user, $operator_pass);
     $res = $dbSocket->query($sql);
     $numRows = $res->numRows();
